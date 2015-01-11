@@ -49,7 +49,7 @@ function sum(n, acc){ // acc is optional
 
 ## TODO
 
-### Performance
+### Improve Performance
 
 On the current implementation, TCO-ed function is too slow.
 
