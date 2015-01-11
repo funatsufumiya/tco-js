@@ -10,7 +10,7 @@
   function tco(func, funcName){
     var name = getFuncName(func) || funcName;
     if(name == null || name == ''){
-      throw Error("[Error] TCO: Function name is not specified");
+      throw Error("tco(): Function name is not specified");
     }else{
       var lines = func.toString().split("\n");
       var re = new RegExp(name+"[ ]*[(]", 'g');
@@ -26,15 +26,21 @@
       };
 
       eval("var mainFunc = "+fs+";")
-      eval("var fook_"+name+" = function(){return {'tco_return':true, 'args':arguments};}");
+      function TCO_RETURN(){
+      }
+      var retObj = new TCO_RETURN();
+      this["fook_"+name] = function(){
+        retObj.args = arguments;
+        return retObj;
+      }
 
       return function(){
         var args = arguments;
 
         while(true){
           var retVal = mainFunc.apply(null, args);
-          if(retVal.constructor == Object && retVal['tco_return'] == true){
-            args = retVal['args'];
+          if(retVal instanceof TCO_RETURN){
+            args = retVal.args;
             continue;
           }else{
             return retVal;
