@@ -25,7 +25,7 @@ sumOpt(1000000) // 500000500000
 
 ## Limitation
 
-If the implementaion of `sum()` is like below:
+If the implementaion of `sum()` is like below, cannot be optimized with `tco.js`.
 
 ```javascript
 function sum(n){
@@ -35,8 +35,7 @@ function sum(n){
     return n + sum(n-1); // <- complex tail-call
 }
 ```
-
-then it cannot be optimized with `tco.js`. This should be converted to use **accumulators** like below:
+This code should be converted to use **accumulators** like below:
 
 ```javascript
 function sum(n, acc){ // acc is optional
