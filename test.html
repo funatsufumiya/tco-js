@@ -54,7 +54,9 @@
 
     // Test ===============================
 
-    var N = 1000000;
+    var N;
+
+    N = 10000000;
 
     bench('sumBest',[N]);
     bench('sumNonRecur',[N]);
@@ -63,7 +65,16 @@
 
     document.write("<br>");
 
-    var N = 10000;
+    N = 1000000;
+
+    bench('sumBest',[N]);
+    bench('sumNonRecur',[N]);
+    bench('sumRecur',[N]);
+    bench('sumRecurOpt',[N]);
+
+    document.write("<br>");
+
+    N = 10000;
 
     bench('sumBest',[N]);
     bench('sumNonRecur',[N]);
