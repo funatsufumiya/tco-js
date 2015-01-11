@@ -30,6 +30,18 @@
       return (n + 1) * (n / 2);
     }
 
+    function sumNonRecur(n, acc){
+      acc = acc || 0;
+      while(true){
+        if(n == 0){
+          return acc;
+        }else{
+          --n;
+          acc += n
+        }
+      }
+    }
+
     function sumRecur(n, acc){
       acc = acc || 0;
       if(n == 0)
@@ -45,6 +57,7 @@
     var N = 1000000;
 
     bench('sumBest',[N]);
+    bench('sumNonRecur',[N]);
     bench('sumRecur',[N]);
     bench('sumRecurOpt',[N]);
 
@@ -53,6 +66,7 @@
     var N = 10000;
 
     bench('sumBest',[N]);
+    bench('sumNonRecur',[N]);
     bench('sumRecur',[N]);
     bench('sumRecurOpt',[N]);
 
