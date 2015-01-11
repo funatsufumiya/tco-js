@@ -14,13 +14,38 @@ function sum(n, acc){
   if(n == 0)
     return acc;
   else
-    return sumRecur(n-1, acc+n);
+    return sum(n-1, acc+n);
 }
 
 var sumOpt = tco(sumOpt); // Tail-call Optimization
 
 sum(1000000) // Maximum call stack size exceeded
 sumOpt(1000000) // 500000500000
+```
+
+## Limitation
+
+If the sum() is like below:
+
+```javascript
+function sum(n){
+  if(n == 0)
+    return 0;
+  else
+    return n + sum(n-1); // <- here is the probrem
+}
+```
+
+then tco.js can't optimize it. This should be converted to use **accumulators** like below:
+
+```javascript
+function sum(n, acc){
+  acc = acc || 0;
+  if(n == 0)
+    return acc;
+  else
+    return sum(n-1, acc+n);
+}
 ```
 
 ## Notice
