@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>tco.js test</title>
+  <script src="tco.js"></script>
+  <script>
+    // Test function ==============
+
+    function bench(funcName, values){
+      var args = values.map(function(v){ return ''+v; }).join(", ");
+      var t1, t2;
+
+      try{
+        t1 = new Date().getTime();
+        var retVal = window[funcName].apply(null, values);
+        t2 = new Date().getTime();
+        var s = funcName + "(" + args + "): "+ retVal + "  < "+(t2-t1)+"ms >";
+        document.write(s + "<br>");
+      }catch(e){
+        t2 = new Date().getTime();
+        var s = funcName + "(" + args + "): "+ e.message + "  < "+(t2-t1)+"ms >";
+        document.write(s + "<br>");
+      }
+    }
+
+    // Main Functions =====================
+
+    function sumBest(n){
+      return (n + 1) * (n / 2);
+    }
+
+    function sumRecur(n, acc){
+      acc = acc || 0;
+      if(n == 0)
+        return acc;
+      else
+        return sumRecur(n-1, acc+n);
+    }
+
+    var sumRecurOpt = tco(sumRecur); // Tail-call Optimization
+
+    // Test ===============================
+
+    var N = 1000000;
+
+    bench('sumBest',[N]);
+    bench('sumRecur',[N]);
+    bench('sumRecurOpt',[N]);
+
+    document.write("<br>");
+
+    var N = 10000;
+
+    bench('sumBest',[N]);
+    bench('sumRecur',[N]);
+    bench('sumRecurOpt',[N]);
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
