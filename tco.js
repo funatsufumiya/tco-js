@@ -30,7 +30,7 @@
       }
       var retObj = new TCO_RETURN();
       this["fook_"+name] = function(){
-        retObj.args = arguments;
+        retObj['args'] = arguments;
         return retObj;
       }
 
@@ -40,7 +40,7 @@
         while(true){
           var retVal = mainFunc.apply(null, args);
           if(retVal instanceof TCO_RETURN){
-            args = retVal.args;
+            args = retVal['args'];
             continue;
           }else{
             return retVal;

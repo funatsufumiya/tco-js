@@ -47,11 +47,13 @@ function sum(n, acc){ // acc is optional
 }
 ```
 
-## Notice
+## TODO
+
+### Performance
 
 On the current implementation, TCO-ed function is too slow.
 
-If you set "N = 10000" on the above example, `sum(N)` takes **0ms** while `sumOpt(N)` takes **19ms**.
+If you set "N = 10000" on the above example, `sum(N)` takes **0ms** while `sumOpt(N)` takes **12ms**.
 
 ## License
 
