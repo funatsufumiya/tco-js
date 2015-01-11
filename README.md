@@ -27,7 +27,7 @@ sumOpt(1000000) // 500000500000
 
 On the current implementation, TCO-ed function is too slow.
 
-If you set "N = 10000" on the above example, *sum(N) is 0ms* while *sumOpt(N) is 19ms*.
+If you set "N = 10000" on the above example, `sum(N)` takes **0ms** while `sumOpt(N)` takes **19ms**.
 
 ## License
 
