@@ -36,7 +36,7 @@ function sum(n){
 }
 ```
 
-then tco.js can't optimize it. This should be converted to use **accumulators** like below:
+then it cannot be optimized with `tco.js`. This should be converted to use **accumulators** like below:
 
 ```javascript
 function sum(n, acc){ // acc is optional
