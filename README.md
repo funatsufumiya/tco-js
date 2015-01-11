@@ -25,7 +25,7 @@ sumOpt(1000000) // 500000500000
 
 ## Limitation
 
-If the implementaion of sum() is like below:
+If the implementaion of `sum()` is like below:
 
 ```javascript
 function sum(n){
