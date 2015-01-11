@@ -7,25 +7,31 @@
     return m[1];
   }
 
+  function /*String*/ fookRecur(func, funcName){
+    var lines = func.toString().split("\n");
+    var re = new RegExp(funcName+"[ ]*[(]", 'g');
+    var fs = '';
+    for(var i=0; i<lines.length; i++) {
+      var line = lines[i];
+      if(/function[ ]*(.*)\(/.test(line)){
+        fs += (line + "\n");
+      }else{
+        var s = line.replace(re, "fook_"+funcName+"(");
+        fs += (s + "\n");
+      }
+    };
+
+    return fs;
+  }
+
   function tco(func, funcName){
     var name = getFuncName(func) || funcName;
     if(name == null || name == ''){
-      throw Error("tco(): Function name is not specified");
+      throw Error("tco(): Function name is not specified (please pass the name at 2nd argment)");
     }else{
-      var lines = func.toString().split("\n");
-      var re = new RegExp(name+"[ ]*[(]", 'g');
-      var fs = '';
-      for(var i=0; i<lines.length; i++) {
-        var line = lines[i];
-        if(/function[ ]*(.*)\(/.test(line)){
-          fs += (line + "\n");
-        }else{
-          var s = line.replace(re, "fook_"+name+"(");
-          fs += (s + "\n");
-        }
-      };
+      var fookedFuncStr = fookRecur(func, name); /* return as String */
 
-      eval("var mainFunc = "+fs+";")
+      eval("var mainFunc = "+fookedFuncStr+";")
       function TCO_RETURN(){
       }
       var retObj = new TCO_RETURN();
