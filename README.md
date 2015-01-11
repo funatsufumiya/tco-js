@@ -25,26 +25,26 @@ sumOpt(1000000) // 500000500000
 
 ## Limitation
 
-If the sum() is like below:
+If the implementaion of sum() is like below:
 
 ```javascript
 function sum(n){
   if(n == 0)
     return 0;
   else
-    return n + sum(n-1); // <- here is the probrem
+    return n + sum(n-1); // <- complex tail-call
 }
 ```
 
 then tco.js can't optimize it. This should be converted to use **accumulators** like below:
 
 ```javascript
-function sum(n, acc){
-  acc = acc || 0;
+function sum(n, acc){ // acc is optional
+  acc = acc || 0; // default value of acc is 0
   if(n == 0)
     return acc;
   else
-    return sum(n-1, acc+n);
+    return sum(n-1, acc+n); // <- simple tail-call
 }
 ```
 
