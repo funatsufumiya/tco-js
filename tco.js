@@ -31,10 +31,11 @@
     }else{
       var fookedFuncStr = fookRecur(func, name); /* return as String */
 
-      eval("var mainFunc = "+fookedFuncStr+";")
-      function TCO_RETURN(){
-      }
+      eval("var mainFunc = "+fookedFuncStr+";");
+
+      function TCO_RETURN(){};
       var retObj = new TCO_RETURN();
+
       this["fook_"+name] = function(){
         retObj['args'] = arguments;
         return retObj;
