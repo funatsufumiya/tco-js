@@ -5,6 +5,7 @@ Tail-call Optimization for JavaScript
 ## Feature
 
 - Convert a tail-call recursion to a loop
+- Compatible with browsers and node.js
 - Easy to use
 - Not using `eval` or `new Function`
 
