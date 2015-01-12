@@ -15,7 +15,7 @@ Tail-call Optimization for JavaScript
 
 ```javascript
 
-// Note: only for testing, bad implementation
+// Note: only for testing, bad algorithm
 function sum(n, acc){
   acc = acc || 0;
   if(n == 0)
