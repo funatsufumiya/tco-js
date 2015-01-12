@@ -1,8 +1,18 @@
 (function(G){
   function getFuncName(f){
     var s = f.toString();
-    var m = s.match(/function[ ]*(.*)\(/);
-    return m[1];
+    var n1 = s.indexOf('function') + 8;
+    var n2 = s.indexOf('(');
+    var name = s.substring(n1,n2);
+    name = name.split(/\/\*[\s\S]*?\*\//).join('');
+
+    var lines = name.split("\n");
+    for (var i=0; i<lines.length; i++) {
+      var line = lines[i]
+    };
+    name = name.split(/\/\/.*(?:$|\n)/).join('');
+    name = name.split(/\s/).join('');
+    return name;
   }
 
   // function getArgumentDefs(f){
