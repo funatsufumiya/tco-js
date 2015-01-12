@@ -1,6 +1,4 @@
-(function(){
-  var G = (typeof window == 'undefined')? GLOBAL: window;
-
+(function(G){
   function getFuncName(f){
     var s = f.toString();
     var m = s.match(/function[ ]*(.*)\(/);
@@ -60,6 +58,10 @@
     }
   }
 
-  G.tco = tco;
+  if(typeof module != 'undefined' && module.exports){
+    module.exports = tco; // for Node.js
+  }else{
+    G.tco = tco; // for browser
+  }
 
-})();
+})(this);
