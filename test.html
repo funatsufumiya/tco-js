@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>tco.js test</title>
-  <script src="tco-0.0.2a1.js"></script>
+  <script src="tco-0.0.3a1.js"></script>
   <script>
     // Test function ==============
 
@@ -54,6 +54,7 @@
     var sumRecurOpt = tco(sumRecur); // Tail-call Optimization
 
     function sumRecurOpt2(n, acc){
+      function makeArray(){ return arguments };
       var args = null;
       while(true){
         if(args != null){
