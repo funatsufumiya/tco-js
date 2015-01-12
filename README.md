@@ -97,13 +97,13 @@ However if the recursion depth increases, the performance becomes worse with acc
 
 For example, the results of the benchmarks in `test.html` becomes below.
 
-
-| N | sum (manually optimized) | sum (TCO-ed) |
-| - | ------------------------ | ------------ |
-| 1000000 | 10ms | 647ms |
-| 100000 | 0ms | 44ms |
-| 10000 | 1ms | 4ms |
-| 1000 | 0ms | 1ms |
+<table>
+<tr><td>N</td><td>sum (manually optimized)</td><td>sum (TCO-ed)</td></tr>
+<tr><td>1000000</td><td>10ms</td><td>647ms</td></tr>
+<tr><td>100000</td><td>0ms</td><td>44ms</td></tr>
+<tr><td>10000</td><td>1ms</td><td>4ms</td></tr>
+<tr><td>1000</td><td>0ms</td><td>1ms</td></tr>
+</table>
 
 
 ## License
