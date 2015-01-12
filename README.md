@@ -2,6 +2,12 @@
 
 Tail-call Optimization for JavaScript
 
+## Feature
+
+- Convert a tail-call recursion to a loop
+- Easy to use (`tco(func)`)
+- Not using `eval` or `new Function`
+
 ## Usage
 
 - Add `<script src="path/to/tco.js"></script>` to the head
