@@ -58,7 +58,7 @@ function sum(n, acc){ // acc is optional
 
 ### Mutual Recursion
 
-`tco.js` **cannot** optimize the *mutual recursion* like below.
+`tco.js` **cannot** optimize the *[mutual recursion](http://en.wikipedia.org/wiki/Mutual_recursion)* like below.
 
 ```javascript
 function is_even(n) {
