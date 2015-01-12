@@ -97,4 +97,8 @@ For example, the results of the benchmarks in `test.html` becomes below.
 
 ## License
 
-MIT License
+(C) 2014- Atmarksharp all rights reserved
+
+Please **share** and **modify** all contents without any conditions.
+
+If possible, please mention copyrights belongs to **Atmarksharp** and copy this sentence.
