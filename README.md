@@ -88,8 +88,8 @@ For example, the results of the benchmarks in `test.html` becomes below.
 
 <table>
 <tr><th>N</th><th>sum (manually optimized)</th><th>sum (TCO-ed)</th></tr>
-<tr><td>1000000</td><td>24ms</td><td>450ms</td></tr>
-<tr><td>100000</td><td>0ms</td><td>30ms</td></tr>
+<tr><td>1000000</td><td>8ms</td><td>380ms</td></tr>
+<tr><td>100000</td><td>0ms</td><td>28ms</td></tr>
 <tr><td>10000</td><td>1ms</td><td>4ms</td></tr>
 <tr><td>1000</td><td>0ms</td><td>1ms</td></tr>
 </table>
