@@ -2,7 +2,7 @@
 
 Tail-call Optimization for JavaScript
 
-## Feature
+## Features
 
 - Convert a tail-call recursion to a loop
 - Compatible with browsers and node.js
