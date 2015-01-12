@@ -47,6 +47,46 @@ function sum(n, acc){ // acc is optional
 }
 ```
 
+## How to apply Tail-call Optimization
+
+When you calls the `tco(f)` function, a passed function (`f`) is replaced dynamically to apply TCO.
+
+For detail, call `f.toString()` to get string representation of the function, and modify that with string manipulation. At last, evaluate (`eval`) the string to get a optimized function.
+
+Let's see an example of the sum function that is defined in the above.
+
+```javascript
+function sum(n, acc){
+  acc = acc || 0;
+  if(n == 0)
+    return acc;
+  else
+    return sum(n-1, acc+n);
+}
+```
+
+This calculates the sum total from 1 to N.
+
+If you call `var sum_tco = tco(sum);`, sum function is converted like below.
+
+```javascript
+function sum_tco(n, acc){
+  var args = null;
+  while(true){
+    if(args != null){
+      n = args[0];
+      acc = args[1];
+    }
+
+    acc = acc || 0;
+    if(n == 0)
+      return acc;
+    else
+      args = makeArray(n-1, acc+n);
+  }
+}
+```
+
 ## TODO
 
 ### Improve The Performance
