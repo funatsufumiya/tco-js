@@ -65,14 +65,14 @@ function is_even(n) {
     if (n == 0)
         return true;
     else
-        return is_odd(n - 1); // call is\_odd
+        return is_odd(n - 1); // call is_odd
 }
  
 function is_odd(n) {
     if (n == 0)
         return false;
     else
-        return is_even(n - 1); // call is\_even
+        return is_even(n - 1); // call is_even
 }
 ```
 
