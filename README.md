@@ -30,7 +30,7 @@ sum(1000000) // Maximum call stack size exceeded
 sumOpt(1000000) // 500000500000
 ```
 
-### Create Tail-call Using Accumulator
+#### [NOTE] Create Tail-call Using Accumulator
 
 If the implementaion of `sum()` is like below, **cannot** apply TCO, because it's not tail-call.
 
