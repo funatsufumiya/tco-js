@@ -36,8 +36,9 @@
         if(n == 0){
           return acc;
         }else{
-          --n;
           acc += n
+          n -= 1;
+          continue;
         }
       }
     }
@@ -52,6 +53,22 @@
 
     var sumRecurOpt = tco(sumRecur); // Tail-call Optimization
 
+    function sumRecurOpt2(n, acc){
+      var args = null;
+      while(true){
+        if(args != null){
+          n = args[0];
+          acc = args[1];
+        }
+
+        acc = acc || 0;
+        if(n == 0)
+          return acc;
+        else
+          args = makeArray(n-1, acc+n);
+      }
+    }
+
     // Test ===============================
 
     var N;
@@ -62,6 +79,7 @@
     bench('sumNonRecur',[N]);
     bench('sumRecur',[N]);
     bench('sumRecurOpt',[N]);
+    bench('sumRecurOpt2',[N]);
 
     document.write("<br>");
 
@@ -71,6 +89,7 @@
     bench('sumNonRecur',[N]);
     bench('sumRecur',[N]);
     bench('sumRecurOpt',[N]);
+    bench('sumRecurOpt2',[N]);
 
     document.write("<br>");
 
@@ -80,6 +99,7 @@
     bench('sumNonRecur',[N]);
     bench('sumRecur',[N]);
     bench('sumRecurOpt',[N]);
+    bench('sumRecurOpt2',[N]);
 
     document.write("<br>");
 
@@ -89,6 +109,7 @@
     bench('sumNonRecur',[N]);
     bench('sumRecur',[N]);
     bench('sumRecurOpt',[N]);
+    bench('sumRecurOpt2',[N]);
 
   </script>
 </head>
