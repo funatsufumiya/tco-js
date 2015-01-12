@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>tco.js test</title>
-  <script src="tco.js"></script>
+  <script src="tco-0.0.2a.js"></script>
   <script>
     // Test function ==============
 
@@ -56,15 +56,6 @@
 
     var N;
 
-    N = 10000000;
-
-    bench('sumBest',[N]);
-    bench('sumNonRecur',[N]);
-    bench('sumRecur',[N]);
-    bench('sumRecurOpt',[N]);
-
-    document.write("<br>");
-
     N = 1000000;
 
     bench('sumBest',[N]);
@@ -74,7 +65,25 @@
 
     document.write("<br>");
 
+    N = 100000;
+
+    bench('sumBest',[N]);
+    bench('sumNonRecur',[N]);
+    bench('sumRecur',[N]);
+    bench('sumRecurOpt',[N]);
+
+    document.write("<br>");
+
     N = 10000;
+
+    bench('sumBest',[N]);
+    bench('sumNonRecur',[N]);
+    bench('sumRecur',[N]);
+    bench('sumRecurOpt',[N]);
+
+    document.write("<br>");
+
+    N = 1000;
 
     bench('sumBest',[N]);
     bench('sumNonRecur',[N]);

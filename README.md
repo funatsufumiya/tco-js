@@ -4,11 +4,11 @@ Tail-call Optimization for JavaScript
 
 ## Usage
 
-- Add `<script src="path/to/tco.js"></script>` to head
+- Add `<script src="path/to/tco.js"></script>` to the head
 
 ```javascript
 
-// Note: only for testing, bad implementation 
+// Note: only for testing, bad implementation
 function sum(n, acc){
   acc = acc || 0;
   if(n == 0)
@@ -49,11 +49,20 @@ function sum(n, acc){ // acc is optional
 
 ## TODO
 
-### Improve Performance
+### Improve The Performance
 
-On the current implementation, TCO-ed function is too slow.
+From the version 0.0.2a, the performance was very improved.
 
-If you set "N = 10000" on the above example, `sum(N)` takes **0ms** while `sumOpt(N)` takes **12ms**.
+However if the recursion depth increases, the performance becomes worse with acceleration.
+
+For example, the results of the benchmarks in `test.html` becomes below.
+
+|N|sum (manually optimized)|sum (TCO-ed)|
+|-|-------------------|------------|
+|1000000|10ms|647ms|
+|100000|0ms|44ms|
+|10000|1ms|4ms|
+|1000|0ms|1ms|
 
 ## License
 
