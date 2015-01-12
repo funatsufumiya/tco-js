@@ -70,6 +70,17 @@
       }
     }
 
+    function foo(x) {
+      if (x == 1) {
+        return 1;
+      }
+      else {
+        return foo(x-1);
+      }
+    }
+
+    var fooOpt = tco(foo);
+
     // Test ===============================
 
     var N;
@@ -81,6 +92,8 @@
     bench('sumRecur',[N]);
     bench('sumRecurOpt',[N]);
     bench('sumRecurOpt2',[N]);
+    bench('foo',[N]);
+    bench('fooOpt',[N]);
 
     document.write("<br>");
 

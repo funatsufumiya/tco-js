@@ -30,16 +30,16 @@ sum(1000000) // Maximum call stack size exceeded
 sumOpt(1000000) // 500000500000
 ```
 
-## Limitation
+### Create Tail-call Using Accumulator
 
-If the implementaion of `sum()` is like below, cannot be optimized with `tco.js`.
+If the implementaion of `sum()` is like below, **cannot** apply TCO, because it's not tail-call.
 
 ```javascript
 function sum(n){
   if(n == 0)
     return 0;
   else
-    return n + sum(n-1); // <- complex tail-call
+    return n + sum(n-1); // <- not tail-call
 }
 ```
 This code should be converted to use **accumulators** like below:
@@ -50,7 +50,29 @@ function sum(n, acc){ // acc is optional
   if(n == 0)
     return acc;
   else
-    return sum(n-1, acc+n); // <- simple tail-call
+    return sum(n-1, acc+n); // <- tail-call
+}
+```
+
+## Limitation
+
+### Mutual Recursion
+
+`tco.js` **cannot** optimize the *mutual recursion* like below.
+
+```javascript
+function is_even(n) {
+    if (n == 0)
+        return true;
+    else
+        return is_odd(n - 1); // call is\_odd
+}
+ 
+function is_odd(n) {
+    if (n == 0)
+        return false;
+    else
+        return is_even(n - 1); // call is\_even
 }
 ```
 
