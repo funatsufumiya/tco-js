@@ -45,7 +45,7 @@
       }else{
         if(line.indexOf(funcName) > -1){
           var s = line.replace(re, "args = makeArray(");
-          fs += (s + '; continue;' + "\n");
+          fs += (s + "\n");
         }else{
           fs += (line + "\n");
         }

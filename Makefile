@@ -1,3 +1,3 @@
 default: minify
 minify:
-	yuicompressor --type js tco.js -o tco.min.js
+	yuicompressor --type js tco-0.0.2a.js -o tco-0.0.2a.min.js
