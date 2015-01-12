@@ -18,7 +18,7 @@
     var s = '';
     for (var i=0; i<argDefs.length; i++) {
       var varName = argDefs[i];
-      s += ('\t\t\t'+varName+' = args['+i+']\n');
+      s += ('\t\t\t'+varName+' = args['+i+'];\n');
     };
 
     return s;
