@@ -27,10 +27,10 @@ function sum(n, acc){
   if(n == 0)
     return acc;
   else
-    return sum(n-1, acc+n);
+    return TCO.tail_call(n-1, acc+n);
 }
 
-var sumOpt = tco(sum); // Tail-call Optimization
+var sumOpt = TCO.optimize(sum); // Tail-call Optimization
 
 sum(1000000) // Maximum call stack size exceeded
 sumOpt(1000000) // 500000500000
@@ -41,7 +41,7 @@ sumOpt(1000000) // 500000500000
 - Add module like `node abc.js -r tco-xxx.min.js`
 
 ```javascript
-var tco = require("tco-xxx.min.js");
+var TCO = require("tco-xxx.min.js");
 
 // Note: only for testing, bad algorithm
 function sum(n, acc){
@@ -49,10 +49,10 @@ function sum(n, acc){
   if(n == 0)
     return acc;
   else
-    return sum(n-1, acc+n);
+    return TCO.tail_call(n-1, acc+n);
 }
 
-var sumOpt = tco(sum); // Tail-call Optimization
+var sumOpt = TCO.optimize(sum); // Tail-call Optimization
 
 sum(1000000) // Maximum call stack size exceeded
 sumOpt(1000000) // 500000500000
