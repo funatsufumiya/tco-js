@@ -30,7 +30,7 @@ function sum(n, acc){
     return sum(n-1, acc+n);
 }
 
-var sumOpt = tco(sumOpt); // Tail-call Optimization
+var sumOpt = tco(sum); // Tail-call Optimization
 
 sum(1000000) // Maximum call stack size exceeded
 sumOpt(1000000) // 500000500000
@@ -52,7 +52,7 @@ function sum(n, acc){
     return sum(n-1, acc+n);
 }
 
-var sumOpt = tco(sumOpt); // Tail-call Optimization
+var sumOpt = tco(sum); // Tail-call Optimization
 
 sum(1000000) // Maximum call stack size exceeded
 sumOpt(1000000) // 500000500000
