@@ -27,10 +27,18 @@ function sum(n, acc){
   if(n == 0)
     return acc;
   else
+    return sum(n-1, acc+n);
+}
+
+function sum2(n, acc){
+  acc = acc || 0;
+  if(n == 0)
+    return acc;
+  else
     return TCO.tail_call(n-1, acc+n);
 }
 
-var sumOpt = TCO.optimize(sum); // Tail-call Optimization
+var sumOpt = TCO.optimize(sum2); // Tail-call Optimization
 
 sum(1000000) // Maximum call stack size exceeded
 sumOpt(1000000) // 500000500000
@@ -49,10 +57,18 @@ function sum(n, acc){
   if(n == 0)
     return acc;
   else
+    return sum(n-1, acc+n);
+}
+
+function sum2(n, acc){
+  acc = acc || 0;
+  if(n == 0)
+    return acc;
+  else
     return TCO.tail_call(n-1, acc+n);
 }
 
-var sumOpt = TCO.optimize(sum); // Tail-call Optimization
+var sumOpt = TCO.optimize(sum2); // Tail-call Optimization
 
 sum(1000000) // Maximum call stack size exceeded
 sumOpt(1000000) // 500000500000
@@ -95,7 +111,7 @@ function is_even(n) {
     else
         return is_odd(n - 1); // call is_odd
 }
- 
+
 function is_odd(n) {
     if (n == 0)
         return false;
