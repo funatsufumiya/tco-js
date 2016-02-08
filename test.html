@@ -3,131 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>tco.js test</title>
-  <script src="tco-0.0.4a2.js"></script>
+  <script src="http://code.jquery.com/jquery-1.12.0.js"></script>
+  <script src="tco.js"></script>
   <script>
-    // Test function ==============
+  // Note: only for testing, bad algorithm
+  function sum(n, acc){
+    acc = acc || 0;
+    if(n == 0)
+      return acc;
+    else
+      return TCO.tail_call(n-1, acc+n);
+  }
 
-    function bench(funcName, values){
-      var args = values.map(function(v){ return ''+v; }).join(", ");
-      var t1, t2;
+  var sumOpt = TCO.optimize(sum); // Tail-call Optimization
 
-      try{
-        t1 = new Date().getTime();
-        var retVal = window[funcName].apply(null, values);
-        t2 = new Date().getTime();
-        var s = funcName + "(" + args + "): "+ retVal + "  < "+(t2-t1)+"ms >";
-        document.write(s + "<br>");
-      }catch(e){
-        t2 = new Date().getTime();
-        var s = funcName + "(" + args + "): "+ e.message + "  < "+(t2-t1)+"ms >";
-        document.write(s + "<br>");
-      }
-    }
+  // var ret = sum(1000000); // Maximum call stack size exceeded
+  var ret = sumOpt(1000000); // 500000500000
 
-    // Main Functions =====================
+  console.log(ret);
 
-    function sumBest(n){
-      return (n + 1) * (n / 2);
-    }
-
-    function sumNonRecur(n, acc){
-      acc = acc || 0;
-      while(true){
-        if(n == 0){
-          return acc;
-        }else{
-          acc += n
-          n -= 1;
-          continue;
-        }
-      }
-    }
-
-    function sumRecur(n, acc){
-      acc = acc || 0;
-      if(n == 0)
-        return acc;
-      else
-        return sumRecur(n-1, acc+n);
-    }
-
-    var sumRecurOpt = tco(sumRecur); // Tail-call Optimization
-
-    function sumRecurOpt2(n, acc){
-      function makeArray(){ return arguments };
-      var args = null;
-      while(true){
-        if(args != null){
-          n = args[0];
-          acc = args[1];
-        }
-
-        acc = acc || 0;
-        if(n == 0)
-          return acc;
-        else
-          args = makeArray(n-1, acc+n);
-      }
-    }
-
-    function foo(x) {
-      if (x == 1) {
-        return 1;
-      }
-      else {
-        return foo(x-1);
-      }
-    }
-
-    var fooOpt = tco(foo);
-
-    // Test ===============================
-
-    var N;
-
-    N = 1000000;
-
-    bench('sumBest',[N]);
-    bench('sumNonRecur',[N]);
-    bench('sumRecur',[N]);
-    bench('sumRecurOpt',[N]);
-    bench('sumRecurOpt2',[N]);
-    bench('foo',[N]);
-    bench('fooOpt',[N]);
-
-    document.write("<br>");
-
-    N = 100000;
-
-    bench('sumBest',[N]);
-    bench('sumNonRecur',[N]);
-    bench('sumRecur',[N]);
-    bench('sumRecurOpt',[N]);
-    bench('sumRecurOpt2',[N]);
-
-    document.write("<br>");
-
-    N = 10000;
-
-    bench('sumBest',[N]);
-    bench('sumNonRecur',[N]);
-    bench('sumRecur',[N]);
-    bench('sumRecurOpt',[N]);
-    bench('sumRecurOpt2',[N]);
-
-    document.write("<br>");
-
-    N = 1000;
-
-    bench('sumBest',[N]);
-    bench('sumNonRecur',[N]);
-    bench('sumRecur',[N]);
-    bench('sumRecurOpt',[N]);
-    bench('sumRecurOpt2',[N]);
+  jQuery(function(){
+    $('#result').html("sum = " + ret);
+  });
 
   </script>
 </head>
 <body>
-
+  <h2>Result</h2>
+  <p id="result">計算中...</p>
 </body>
 </html>
