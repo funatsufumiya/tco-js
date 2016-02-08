@@ -9,6 +9,10 @@ Tail-call Optimization for JavaScript
 - Easy to use
 - Not using `eval` or `new Function`
 
+## Download
+
+- [0.0.1a2](https://github.com/atmarksharp/tco-js/releases/tag/0.0.1a2)
+
 ## Usage
 
 - Add `<script src="path/to/tco.js"></script>` to the head
