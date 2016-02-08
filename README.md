@@ -11,7 +11,7 @@ Tail-call Optimization for JavaScript
 
 ## Download
 
-- [0.0.1a2](https://github.com/atmarksharp/tco-js/releases/tag/0.0.1a2)
+- [tco.js - v0.0.3a2](https://github.com/atmarksharp/tco-js/releases/tag/v0.0.3a2)
 
 ## Usage
 
